@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contoh Socket.io + Express</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Contoh Socket.io + Express</h1>
+        <p>Contoh Socket.io + Express</p>
+        <script src="socket.io.js"></script>
+        
+        <script>
+            var socket = io.connect('http://localhost');
+            socket.on('kirim ke browser', function (data) {
+            document.getElementById("container").innerHTML=
+            "<p>" + data.kalimatDariServer + "</p>";
+            socket.emit('dari browser', {
+            kalimatDariBrowser: 'Kalimat ini dikirim dari browser' });
+            });
+        </script>
+        
+        <div id="container">
+        <p>Contoh Socket.io + Express</p>
+        </div>
+    </body>
+</html>
